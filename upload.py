@@ -1,6 +1,5 @@
 from flask import Flask,render_template,request 
 import pandas as pd
-from flask_ngrok import run_with_ngrok
 import regex as re
 
 # ## method 1
@@ -52,7 +51,7 @@ import regex as re
 
     
 app = Flask(__name__)
-run_with_ngrok(app)
+
 @app.route("/",methods=["GET","POST"])
 def upload_file():
     if request.method == "POST":
@@ -71,4 +70,4 @@ def upload_file():
         return render_template("upload-file.html", tables=[df.to_html(classes='data',header="true")],msg = "File(s) have been uploaded ")
     return render_template("upload-file.html",msg = "please choose a file ")
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
