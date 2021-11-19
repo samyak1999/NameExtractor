@@ -1,0 +1,13 @@
+<div>
+	{{msg}}
+	<br />
+	<form action="/" method="POST" enctype="multipart/form-data">
+		<input type="file" name="file_name" multiple />
+		<input type="submit" value="Submit" />
+	</form>
+</div>
+
+<div>
+	<h2 center>Result</h2>
+	{% for table in tables %} {{ table | safe }} {% endfor %}
+</div>
